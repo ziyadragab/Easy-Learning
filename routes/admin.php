@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\HomeSlideController;
@@ -51,6 +52,21 @@ Route::group(
                         Route::get('edit/{slide}','edit')->name('edit');
                         Route::put('update/{slide}','update')->name('update');
                         Route::delete('/{slide}','delete')->name('delete');
+                    }
+                );
+                Route::group(
+                    [
+                        'as' => 'about.',
+                        'prefix' => 'abouts',
+                        'controller'=>AboutController::class
+                    ],
+                    function () {
+                        Route::get('','index')->name('index');
+                        Route::get('create','create')->name('create');
+                        Route::post('store','store')->name('store');
+                        Route::get('edit/{about}','edit')->name('edit');
+                        Route::put('update/{about}','update')->name('update');
+                        Route::delete('/{about}','delete')->name('delete');
                     }
                 );
             }

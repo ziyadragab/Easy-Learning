@@ -59,6 +59,23 @@
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <a class="waves-effect" data-bs-toggle="collapse" href="#abouts" role="button" aria-expanded="false">
+                        <i class="fas fa-info-circle"></i> <!-- Replace with your 'About' icon class -->
+                        <span>About</span>
+                    </a>
+                    <div class="collapse" id="abouts">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.about.create') }}">Create New About</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.about.index') }}">Display Abouts</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
         </div>
 

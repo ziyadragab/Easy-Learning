@@ -25,7 +25,7 @@ class StoreHomeSlideRequest extends FormRequest
             'title_en'     => 'required|string|max:255',
             'title_ar'     => 'required|string|max:255',
             'description' => 'required|string',
-            'image'       => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'video'       => 'nullable|string'
         ];
     }
