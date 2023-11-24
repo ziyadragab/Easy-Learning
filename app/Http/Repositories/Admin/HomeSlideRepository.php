@@ -47,8 +47,7 @@ class HomeSlideRepository implements HomeSlideInterface{
     public function update($slide, $request)
     {
       if($request->image){
-       $newImage= $this->uploadImage($request->image,$this->homeSlideModel::PATH , $slide->getRawOriginal('image'));
-       $this->removeImage($slide->imag);
+       $newImage= $this->uploadImage($request->image,$this->homeSlideModel::PATH , $slide->image);
       }
       $slide->update([
       'title'=>

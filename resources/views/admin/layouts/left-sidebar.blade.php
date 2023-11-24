@@ -58,8 +58,24 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li>
+                    <li>
+                        <a class="waves-effect" data-bs-toggle="collapse" href="#images" role="button" aria-expanded="false">
+                            <i class="fas fa-image"></i> <!-- FontAwesome class for image icon -->
+                            <span>Images</span>
+                        </a>
+                        <div class="collapse" id="images">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.image.create') }}">Create New Image</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.image.index') }}">Display Images</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
                     <a class="waves-effect" data-bs-toggle="collapse" href="#abouts" role="button" aria-expanded="false">
                         <i class="fas fa-info-circle"></i> <!-- Replace with your 'About' icon class -->
                         <span>About</span>

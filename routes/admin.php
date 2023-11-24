@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\AboutController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\HomeSlideController;
-use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -67,6 +68,21 @@ Route::group(
                         Route::get('edit/{about}','edit')->name('edit');
                         Route::put('update/{about}','update')->name('update');
                         Route::delete('/{about}','delete')->name('delete');
+                    }
+                );
+                Route::group(
+                    [
+                        'as' => 'image.',
+                        'prefix' => 'images',
+                        'controller'=>ImageController::class
+                    ],
+                    function () {
+                        Route::get('','index')->name('index');
+                        Route::get('create','create')->name('create');
+                        Route::post('store','store')->name('store');
+                        Route::get('edit/{image}','edit')->name('edit');
+                        Route::put('update/{image}','update')->name('update');
+                        Route::delete('/{image}','delete')->name('delete');
                     }
                 );
             }
