@@ -42,12 +42,13 @@ class HomeSlideRepository implements HomeSlideInterface{
     }
     public function edit($slide)
     {
-      return view('admin.pages.slide.edit',compact('slide')); 
+      return view('admin.pages.slide.edit',compact('slide'));
     }
     public function update($slide, $request)
     {
       if($request->image){
        $newImage= $this->uploadImage($request->image,$this->homeSlideModel::PATH , $slide->getRawOriginal('image'));
+       $this->removeImage($slide->imag);
       }
       $slide->update([
       'title'=>
@@ -64,12 +65,12 @@ class HomeSlideRepository implements HomeSlideInterface{
     }
     public function delete($slide)
     {
-       
+
       $this->removeImage($slide->image);
       $slide->delete();
       toast('Slide Deleted Successfully','success');
       return redirect(route('admin.slide.index'));
-    } 
+    }
 }
 
 

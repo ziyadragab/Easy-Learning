@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         <div class="card-footer text-end w-2">
-                            <a href="{{ route('admin.slide.create') }}" class="btn btn-primary">+ Add </a>
+                            <a href="{{ route('admin.about.create') }}" class="btn btn-primary">+ Add </a>
                         </div>
                         <h4>Abouts</h4>
                         {!! $dataTable->table(['class'=>'table table-bordered dt-table-hover dataTable text-center'])

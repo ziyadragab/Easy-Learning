@@ -8,7 +8,6 @@ use App\Models\About;
 
 class AboutRepository implements AboutInterface
 {
-
     use ImagesTrait;
 
     private $aboutModel;
@@ -61,7 +60,7 @@ class AboutRepository implements AboutInterface
     public function update($about, $request)
     {
         if ($request->image) {
-            $newImage = $this->uploadImage($request->image, $this->aboutModel::PATH, $about->getRawOriginal('image'));
+            $newImage = $this->uploadImage($request->image, $this->aboutModel::PATH, $about->image);
         }
         $about->update([
             'title' =>
