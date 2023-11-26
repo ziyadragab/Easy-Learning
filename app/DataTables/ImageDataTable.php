@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
-use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class ImageDataTable extends DataTable
@@ -28,8 +25,12 @@ class ImageDataTable extends DataTable
         ->editColumn('image', function (Image $image) {
             return '<img src="'.asset($image->image??null).'" alt="" style="max-width: 100px; max-height: 100px;">';
         })
+        ->editColumn('id',function(){
+         static $i=1;
+         return  $i++;
+        })
             ->setRowId('id');
-        return $table->rawColumns(['action', 'image'])->addIndexColumn();
+        return $table->rawColumns(['action', 'image','id'])->addIndexColumn();
 
     }
 
