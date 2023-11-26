@@ -76,6 +76,23 @@
                     </li>
 
                     <li>
+                        <a class="waves-effect" data-bs-toggle="collapse" href="#portfolios" role="button" aria-expanded="false">
+                            <i class="fas fa-briefcase"></i>
+                            <span>PortFolio</span>
+                        </a>
+                        <div class="collapse" id="portfolios">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.portfolio.create') }}">Create New Portfolio</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.portfolio.index') }}">Display Portfolios</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
                     <a class="waves-effect" data-bs-toggle="collapse" href="#abouts" role="button" aria-expanded="false">
                         <i class="fas fa-info-circle"></i> <!-- Replace with your 'About' icon class -->
                         <span>About</span>

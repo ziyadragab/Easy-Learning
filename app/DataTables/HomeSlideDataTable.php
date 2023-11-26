@@ -28,7 +28,7 @@ public function dataTable(QueryBuilder $query): EloquentDataTable
 
         ->editColumn('video', function (HomeSlide $slide) {
             $videoUrl = $slide->video;
-        
+
             return '<video width="60" height="60" controls>
                         <source src="' . $videoUrl . '" type="video/mp4">
                         Your browser does not support the video tag.
@@ -39,10 +39,14 @@ public function dataTable(QueryBuilder $query): EloquentDataTable
             return view('admin.pages.slide.descrption',compact('slide')) ;
         })
         ->editColumn('title', function (HomeSlide $slide) {
-            return $slide->translate('title');
+            return $slide->getTranslation('title',app()->getLocale());
         })
+        ->editColumn('id',function(){
+            static $i=1;
+            return  $i++;
+           })
         ->setRowId('id');
-        return $table->rawColumns(['action', 'image','video', 'description','title'])->addIndexColumn();
+        return $table->rawColumns(['action','id', 'image','video', 'description','title'])->addIndexColumn();
 }
 
     /**

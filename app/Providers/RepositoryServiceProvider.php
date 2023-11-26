@@ -7,6 +7,7 @@ use App\Http\Interfaces\Admin\AuthInterface as AdminAuthInterface;
 use App\Http\Interfaces\Admin\HomeInterface;
 use App\Http\Interfaces\Admin\HomeSlideInterface;
 use App\Http\Interfaces\Admin\ImageInterface;
+use App\Http\Interfaces\Admin\PortfolioInterface;
 use App\Http\Interfaces\EndUser\AuthInterface;
 use App\Http\Interfaces\EndUser\HomeInterface as EndUserHomeInterface;
 use App\Http\Interfaces\EndUser\RegisterInterface;
@@ -15,6 +16,7 @@ use App\Http\Repositories\Admin\AuthRepository as AdminAuthRepository;
 use App\Http\Repositories\Admin\HomeRepository;
 use App\Http\Repositories\Admin\HomeSlideRepository;
 use App\Http\Repositories\Admin\ImageRepository;
+use App\Http\Repositories\Admin\PortfolioRepository;
 use App\Http\Repositories\EndUser\AuthRepository;
 use App\Http\Repositories\EndUser\HomeRepository as EndUserHomeRepository;
 use App\Http\Repositories\EndUser\RegisterRepository;
@@ -50,7 +52,10 @@ class RepositoryServiceProvider extends ServiceProvider
             ImageInterface::class,
             ImageRepository::class,
           );
-
+          $this->app->bind(
+            PortfolioInterface::class,
+            PortfolioRepository::class,
+          );
         /**
          * End  Admin Classes-------------------------------
          */

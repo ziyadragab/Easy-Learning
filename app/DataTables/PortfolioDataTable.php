@@ -2,14 +2,17 @@
 
 namespace App\DataTables;
 
-use App\Models\Image;
+use App\Models\Portfolio;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
 use Yajra\DataTables\Html\Button;
+use Yajra\DataTables\Html\Column;
+use Yajra\DataTables\Html\Editor\Editor;
+use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ImageDataTable extends DataTable
+class PortfolioDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -18,26 +21,34 @@ class ImageDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-         $table=(new EloquentDataTable($query))
-           ->addColumn('action', function (Image $image) {
-            return view('admin.pages.image.action', compact('image'));
+        $table = (new EloquentDataTable($query))
+        ->addColumn('action', function (Portfolio $portfolio) {
+            return view('admin.pages.portfolio.action', compact('portfolio'));
         })
-        ->editColumn('image', function (Image $image) {
-            return '<img src="'.asset($image->image??null).'" alt="" style="max-width: 100px; max-height: 100px;">';
+        ->editColumn('image', function (Portfolio $portfolio) {
+            return '<img src="'.asset($portfolio->image??null).'" alt="" style="max-width: 100px; max-height: 100px;">';
+        })
+        ->editColumn('description', function (Portfolio $portfolio) {
+            return view('admin.pages.portfolio.descrption',compact('portfolio')) ;
+        })
+        ->editColumn('title', function (Portfolio $portfolio) {
+            return $portfolio->getTranslation('title',app()->getLocale());
+        })
+        ->editColumn('name', function (Portfolio $portfolio) {
+            return $portfolio->getTranslation('name',app()->getLocale());
         })
         ->editColumn('id',function(){
-         static $i=1;
-         return  $i++;
-        })
-            ->setRowId('id');
-        return $table->rawColumns(['action', 'image','id'])->addIndexColumn();
-
+            static $i=1;
+            return  $i++;
+           })
+        ->setRowId('id');
+        return $table->rawColumns(['action','id', 'image','name', 'description','title'])->addIndexColumn();
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Image $model): QueryBuilder
+    public function query(Portfolio $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -48,7 +59,7 @@ class ImageDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('image-table')
+                    ->setTableId('portfolio-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -71,9 +82,12 @@ class ImageDataTable extends DataTable
     {
         return [
             ['data'=>'id','title'=>'ID' , 'name'=>'id'],
+            ['data'=>'name','title'=>'NAME' , 'name'=>'name'],
+            ['data'=>'title','title'=>'TITLE' , 'name'=>'title'],
+            ['data'=>'description','title'=>'DESCRIPTION' , 'name'=>'description'],
             ['data'=>'image','title'=>'IMAGE' , 'name'=>'image'],
             ['data'=>'action','title'=>'ACTION' , 'name'=>'action','searchable'=>false , 'printable'=>false,'exportable'=>false],
-        ];
+          ];
     }
 
     /**
@@ -81,6 +95,6 @@ class ImageDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Image_' . date('YmdHis');
+        return 'Portfolio_' . date('YmdHis');
     }
 }

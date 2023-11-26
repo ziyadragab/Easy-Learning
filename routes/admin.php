@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\HomeSlideController;
+use App\Http\Controllers\Admin\PortfolioController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -83,6 +84,21 @@ Route::group(
                         Route::get('edit/{image}','edit')->name('edit');
                         Route::put('update/{image}','update')->name('update');
                         Route::delete('/{image}','delete')->name('delete');
+                    }
+                );
+                Route::group(
+                    [
+                        'as' => 'portfolio.',
+                        'prefix' => 'portfolios',
+                        'controller'=>PortfolioController::class
+                    ],
+                    function () {
+                        Route::get('','index')->name('index');
+                        Route::get('create','create')->name('create');
+                        Route::post('store','store')->name('store');
+                        Route::get('edit/{portfolio}','edit')->name('edit');
+                        Route::put('update/{portfolio}','update')->name('update');
+                        Route::delete('/{portfolio}','delete')->name('delete');
                     }
                 );
             }
