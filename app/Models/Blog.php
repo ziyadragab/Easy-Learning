@@ -2,29 +2,31 @@
 
 namespace App\Models;
 
-use App\Models\Blog;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Blog extends Model
 {
     use HasFactory, HasSlug, HasTranslations;
 
-    protected $fillable = [ 'name','slug', 'image'];
+    protected $fillable = ['title', 'description', 'slug', 'image', 'tags','category_id'];
+    const PATH='Images/blog';
+    protected $casts=['tags'=>'array'];
 
-    public array $translatable  = ['name'];
+    public array $translatable  = ['title','description'];
     /**
      * Get the options for generating the slug.
      */
     public function getSlugOptions() : SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
+            ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
     /**
      * Get the route key for the model.
      *
@@ -34,8 +36,11 @@ class Category extends Model
     {
         return 'slug';
     }
-    public function blogs()
-    {
-        return $this->hasMany(Blog::class);
+
+    public function getImageAttribute($value){
+        return $this::PATH.DIRECTORY_SEPARATOR.$value;
+    }
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }

@@ -109,6 +109,24 @@
                         </div>
                     </li>
                     <li>
+
+                    <li>
+                        <a class="waves-effect" data-bs-toggle="collapse" href="#blog" role="button" aria-expanded="false">
+                            <i class="fas fa-blog"></i>
+                            <span>Blog</span>
+                        </a>
+                        <div class="collapse" id="blog">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.blog.create') }}">Create New Blog</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.blog.index') }}">Display Blogs</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
                     <a class="waves-effect" data-bs-toggle="collapse" href="#abouts" role="button" aria-expanded="false">
                         <i class="fas fa-info-circle"></i> <!-- Replace with your 'About' icon class -->
                         <span>About</span>
