@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Edit Slide</h4>
+                            <h4 class="header-title">Edit Portfolio</h4>
 
                             <form action="{{ route('admin.portfolio.update', $portfolio) }}" method="post" enctype="multipart/form-data">
                                 @csrf
@@ -86,7 +86,7 @@
                                     @enderror
                                 </div>
 
-                                
+
 
                                 <!-- Submit Button -->
                                 <button type="submit" class="btn btn-primary">Update</button>

@@ -93,6 +93,22 @@
                     </li>
 
                     <li>
+                        <a class="waves-effect" data-bs-toggle="collapse" href="#category" role="button" aria-expanded="false">
+                            <i class="fas fa-folder"></i>
+                            <span>Category</span>
+                        </a>
+                        <div class="collapse" id="category">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.category.create') }}">Create New Category</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.category.index') }}">Display Category</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
                     <a class="waves-effect" data-bs-toggle="collapse" href="#abouts" role="button" aria-expanded="false">
                         <i class="fas fa-info-circle"></i> <!-- Replace with your 'About' icon class -->
                         <span>About</span>
