@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\HomeSlideController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\SettingControllre;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -131,6 +132,21 @@ Route::group(
                         Route::get('edit/{blog}', 'edit')->name('edit');
                         Route::put('update/{blog}', 'update')->name('update');
                         Route::delete('/{blog}', 'delete')->name('delete');
+                    }
+                );
+                Route::group(
+                    [
+                        'as' => 'setting.',
+                        'prefix' => 'settings',
+                        'controller' => SettingControllre::class
+                    ],
+                    function () {
+                        Route::get('', 'index')->name('index');
+                        Route::get('create', 'create')->name('create');
+                        Route::post('store', 'store')->name('store');
+                        Route::get('edit/{setting}', 'edit')->name('edit');
+                        Route::put('update/{setting}', 'update')->name('update');
+                        Route::delete('/{setting}', 'delete')->name('delete');
                     }
                 );
             }
