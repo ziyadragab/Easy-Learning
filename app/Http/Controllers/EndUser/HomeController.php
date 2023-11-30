@@ -17,4 +17,8 @@ class HomeController extends Controller
     public function index(){
         return $this->homeInterface->index();
     }
+    public function showAbout(){
+        return $this->homeInterface->showAbout();
+
+    }
 }

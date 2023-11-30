@@ -34,13 +34,13 @@
                             <div class="menu__wrap">
                                 <nav class="menu__nav">
                                     <div class="logo">
-                                        <a href="index.html" class="logo__black"><img src="assets/img/logo/logo_black.png" alt=""></a>
-                                        <a href="index.html" class="logo__white"><img src="assets/img/logo/logo_white.png" alt=""></a>
+                                        <a href="index.html" class="logo__black"><img src={{ asset("userAssets/img/logo/logo_black.png") }} alt=""></a>
+                                        <a href="index.html" class="logo__white"><img src={{asset ("userAssets/img/logo/logo_white.png") }} alt=""></a>
                                     </div>
                                     <div class="navbar__wrap main__menu d-none d-xl-flex">
                                         <ul class="navigation">
-                                            <li class="active"><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About</a></li>
+                                            <li class="active"><a href="{{ route('endUser.index') }}">Home</a></li>
+                                            <li><a href="{{ route('endUser.showAbout') }}">About</a></li>
                                             <li><a href="services-details.html">Services</a></li>
                                             <li class="menu-item-has-children"><a href="#">Portfolio</a>
                                                 <ul class="sub-menu">
@@ -54,7 +54,7 @@
                                                     <li><a href="blog-details.html">News Details</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">contact me</a></li>
+                                            <li><a href="{{ route('endUser.contact.create') }}">contact me</a></li>
 
                                             <li><a href="{{ route('logout') }}">Log Out</a></li>
 

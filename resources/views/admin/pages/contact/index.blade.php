@@ -6,10 +6,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-footer text-end w-2">
-                            <a href="{{ route('admin.blog.create') }}" class="btn btn-primary">+ Add New Blog</a>
-                        </div>
-                        <h4>All Home Blogs</h4>
+
+                        <h4>{{__('messages.all') .' '.__('messages.messages') }}</h4>
                         {!! $dataTable->table(['class'=>'table table-bordered dt-table-hover dataTable text-center'])
                         !!}
                     </div>

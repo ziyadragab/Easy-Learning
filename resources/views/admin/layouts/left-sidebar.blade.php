@@ -1,5 +1,5 @@
-  <!-- ========== Left Sidebar Start ========== -->
-  <div class="vertical-menu">
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
 
     <div data-simplebar class="h-100">
 
@@ -10,7 +10,8 @@
             </div>
             <div class="mt-3">
                 <h4 class="font-size-16 mb-1">{{ auth()->user()->first_name.' '. auth()->user()->last_name }}</h4>
-                <span class="text-muted"><i class="ri-record-circle-line align-middle font-size-14 text-success"></i> Online</span>
+                <span class="text-muted"><i class="ri-record-circle-line align-middle font-size-14 text-success"></i>
+                    Online</span>
             </div>
         </div>
 
@@ -22,31 +23,37 @@
 
                 <li>
                     <a href="{{ route('admin.index') }}" class="waves-effect">
-                        <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
+                        <i class="ri-dashboard-line"></i>
                         <span>{{ __('messages.dashboard') }}</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="calendar.html" class="waves-effect">
-                        <i class="ri-calendar-2-line"></i>
-                        <span>Calendar</span>
+                    @php
+                    $unreadMessagesCount = App\Models\Contact::where('is_read', false)->count()??null;
+                    @endphp
+                    <a href="{{ route('admin.contact.index') }}" class="waves-effect">
+                        <i class="ri-message-line"></i>
+                        <span class="badge rounded-pill bg-success float-end">{{ $unreadMessagesCount > 0 ?
+                            $unreadMessagesCount : 0 }}</span>
+                        <span>{{ __('messages.messages') }}</span>
                     </a>
                 </li>
+
 
                 <li>
                     <a href="{{ route('admin.showUsers') }}" class="waves-effect">
                         <i class="ri-user-line"></i>
-                        <span>Users</span>
+                        <span>{{ __('messages.users') }}</span>
                     </a>
                 </li>
 
 
                 <!-- Slides Section -->
                 <li>
-                    <a class="waves-effect" data-bs-toggle="collapse" href="#slides" role="button" aria-expanded="false">
+                    <a class="waves-effect" data-bs-toggle="collapse" href="#slides" role="button"
+                        aria-expanded="false">
                         <i class="ri-slideshow-2-line"></i>
-                        <span>Slides</span>
+                        <span>{{ __('messages.slides') }}</span>
                     </a>
                     <div class="collapse" id="slides">
                         <ul class="nav-second-level">
@@ -58,78 +65,99 @@
                             </li>
                         </ul>
                     </div>
-                    <li>
-                        <a class="waves-effect" data-bs-toggle="collapse" href="#images" role="button" aria-expanded="false">
-                            <i class="fas fa-image"></i> <!-- FontAwesome class for image icon -->
-                            <span>Images</span>
-                        </a>
-                        <div class="collapse" id="images">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('admin.image.create') }}">Create New Image</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('admin.image.index') }}">Display Images</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                <li>
+                    <a class="waves-effect" data-bs-toggle="collapse" href="#images" role="button"
+                        aria-expanded="false">
+                        <i class="fas fa-image"></i> <!-- FontAwesome class for image icon -->
+                        <span>{{ __('messages.images') }}</span>
+                    </a>
+                    <div class="collapse" id="images">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.image.create') }}">Create New Image</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.image.index') }}">Display Images</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-                    <li>
-                        <a class="waves-effect" data-bs-toggle="collapse" href="#portfolios" role="button" aria-expanded="false">
-                            <i class="fas fa-briefcase"></i>
-                            <span>PortFolio</span>
-                        </a>
-                        <div class="collapse" id="portfolios">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('admin.portfolio.create') }}">Create New Portfolio</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('admin.portfolio.index') }}">Display Portfolios</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                <li>
+                    <a class="waves-effect" data-bs-toggle="collapse" href="#portfolios" role="button"
+                        aria-expanded="false">
+                        <i class="fas fa-briefcase"></i>
+                        <span>{{ __('messages.portFolio') }}</span>
+                    </a>
+                    <div class="collapse" id="portfolios">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.portfolio.create') }}">Create New Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.portfolio.index') }}">Display Portfolios</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
-                    <li>
-                        <a class="waves-effect" data-bs-toggle="collapse" href="#category" role="button" aria-expanded="false">
-                            <i class="fas fa-folder"></i>
-                            <span>Category</span>
-                        </a>
-                        <div class="collapse" id="category">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('admin.category.create') }}">Create New Category</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('admin.category.index') }}">Display Category</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
+                <li>
+                    <a class="waves-effect" data-bs-toggle="collapse" href="#category" role="button"
+                        aria-expanded="false">
+                        <i class="fas fa-folder"></i>
+                        <span>{{ __('messages.category') }}</span>
+                    </a>
+                    <div class="collapse" id="category">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.category.create') }}">Create New Category</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.category.index') }}">Display Category</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
 
-                    <li>
-                        <a class="waves-effect" data-bs-toggle="collapse" href="#blog" role="button" aria-expanded="false">
-                            <i class="fas fa-blog"></i>
-                            <span>Blog</span>
-                        </a>
-                        <div class="collapse" id="blog">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('admin.blog.create') }}">Create New Blog</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('admin.blog.index') }}">Display Blogs</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                    <a class="waves-effect" data-bs-toggle="collapse" href="#abouts" role="button" aria-expanded="false">
+                <li>
+                    <a class="waves-effect" data-bs-toggle="collapse" href="#blog" role="button" aria-expanded="false">
+                        <i class="fas fa-blog"></i>
+                        <span>{{ __('messages.blog') }}</span>
+                    </a>
+                    <div class="collapse" id="blog">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.blog.create') }}">Create New Blog</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.blog.index') }}">Display Blogs</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a class="waves-effect" data-bs-toggle="collapse" href="#service" role="button" aria-expanded="false">
+                        <i class="fas fa-service"></i>
+                        <span>Services</span>
+                    </a>
+                    <div class="collapse" id="service">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.service.create') }}">Create New Service</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.service.index') }}">Display Services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a class="waves-effect" data-bs-toggle="collapse" href="#abouts" role="button"
+                        aria-expanded="false">
                         <i class="fas fa-info-circle"></i> <!-- Replace with your 'About' icon class -->
-                        <span>About</span>
+                        <span>{{ __('messages.about') }}</span>
                     </a>
                     <div class="collapse" id="abouts">
                         <ul class="nav-second-level">

@@ -1,7 +1,7 @@
-<span data-bs-toggle="modal" style="cursor: pointer;" data-bs-target="#standardModal{{$slide}}">{{\Str::limit($slide->description, 50)}}</span>
+<span data-bs-toggle="modal" style="cursor: pointer;" data-bs-target="#standardModal{{$service}}">{{\Str::limit($service->description, 50)}}</span>
 
 <!-- Modal -->
-<div class="modal fade modal-notification" id="standardModal{{$slide}}" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
+<div class="modal fade modal-notification" id="standardModal{{$service}}" tabindex="-1" role="dialog" aria-labelledby="standardModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" id="standardModalLabel">
         <div class="modal-content">
             <div class="modal-body text-center">
@@ -12,7 +12,7 @@
                     </svg>
                 </div>
 
-                <p class="modal-text" style="white-space: break-spaces;">{{__($slide->description)}}</p>
+                <p class="modal-text" style="white-space: break-spaces;">{{__($service->description)}}</p>
             </div>
         </div>
     </div>

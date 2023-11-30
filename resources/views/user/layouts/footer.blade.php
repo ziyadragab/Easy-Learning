@@ -61,7 +61,6 @@
 
 
 
-
     <!-- JS here -->
     <script src="{{ asset("userAssets/js/vendor/jquery-3.6.0.min.js") }}"></script>
     <script src="{{ asset("userAssets/js/bootstrap.min.js") }}"></script>
@@ -74,7 +73,19 @@
     <script src="{{asset("userAssets/js/wow.min.js")}}"></script>
     <script src="{{asset("userAssets/js/plugins.js")}}"></script>
     <script src="{{ asset("userAssets/js/main.js") }}"></script>
+
     @include('sweetalert::alert')
 
-
-    @stack('js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Your Message Send Successfully',
+                timer: 6000, // Set the timer to 5 seconds
+                timerProgressBar: true,
+                showConfirmButton: false // Hide the "OK" button
+            });
+        });
+    </script>
+@stack('js')

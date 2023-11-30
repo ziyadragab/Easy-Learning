@@ -5,17 +5,18 @@ namespace App\Models;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class HomeSlide extends Model
+class Service extends Model
 {
     use HasFactory, HasSlug, HasTranslations;
 
-    protected $fillable = ['title', 'description', 'slug', 'image', 'video'];
-    const PATH='Images/slide';
+    protected $fillable = ['name', 'description', 'slug', 'image', 'lists'];
+    const PATH='Images/service';
+   
 
-    public array $translatable  = ['title','description'];
+    public array $translatable  = ['name','description'];
     /**
      * Get the options for generating the slug.
      */
@@ -39,5 +40,4 @@ class HomeSlide extends Model
     public function getImageAttribute($value){
         return $this::PATH.DIRECTORY_SEPARATOR.$value;
     }
-
 }

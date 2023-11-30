@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\blog;
+namespace App\Http\Requests\Admin\service;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateBlogRequest extends FormRequest
+class UpdateServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,12 @@ class UpdateBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title_en'     => 'required|string|max:255',
-            'title_ar'     => 'required|string|max:255',
+            'name_en'     => 'required|string|max:255',
+            'name_ar'     => 'required|string|max:255',
             'description_en' => 'required|string',
             'description_ar' => 'required|string',
             'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'tags'           => 'required|array',
-            'tags.*'         => 'in:BUSINESS,DESIGN,LANDING PAGE,DATA,APPS,WEBSITE,BOOK,PRODUCT DESIGN',
-            'category_id' => 'required|exists:categories,id',
+            'lists'           => 'required',
         ];
     }
 }

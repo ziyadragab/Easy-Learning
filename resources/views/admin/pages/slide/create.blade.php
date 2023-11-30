@@ -15,7 +15,7 @@
 
                                 <div class="mb-3">
                                     <label for="title_en" class="form-label">Title In English</label>
-                                    <input type="text" class="form-control" id="title" name="title_en" required>
+                                    <input type="text" class="form-control @error('title_en') is-invalid @enderror" id="title" name="title_en" required>
                                     @error('title_en')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -24,14 +24,22 @@
 
                                 <div class="mb-3">
                                     <label for="title_ar" class="form-label">Title In Arabic</label>
-                                    <input type="text" class="form-control" id="title_ar" name="title_ar" required>
+                                    <input type="text" class="form-control @error('title_ar') is-invalid @enderror" id="title_ar" name="title_ar" >
                                     @error('title_ar')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <textarea class="form-control" id="description" name="description" required></textarea>
+                                    <label for="description" class="form-label">Description In English</label>
+                                    <textarea class="form-control @error('description_en') is-invalid @enderror" id="description" name="description_en" ></textarea>
+                                    @error('description_en')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description In Arabic</label>
+                                    <textarea class="form-control @error('description_ar') is-invalid @enderror" id="description" name="description_ar" ></textarea>
                                     @error('description')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -39,7 +47,7 @@
 
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
-                                    <input type="file" class="form-control" id="image" name="image"  required>
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image"  >
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -47,7 +55,7 @@
 
                                 <div class="mb-3">
                                     <label for="video" class="form-label">Video URL</label>
-                                    <input type="url" class="form-control" id="video" name="video" required>
+                                    <input type="url" class="form-control @error('video') is-invalid @enderror" id="video" name="video" >
                                     @error('video')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

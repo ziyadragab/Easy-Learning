@@ -10,8 +10,10 @@ use App\Http\Interfaces\Admin\HomeInterface;
 use App\Http\Interfaces\Admin\HomeSlideInterface;
 use App\Http\Interfaces\Admin\ImageInterface;
 use App\Http\Interfaces\Admin\PortfolioInterface;
+use App\Http\Interfaces\Admin\ServiceInterface;
 use App\Http\Interfaces\Admin\SettingInterface;
 use App\Http\Interfaces\EndUser\AuthInterface;
+use App\Http\Interfaces\EndUser\ContactInterface;
 use App\Http\Interfaces\EndUser\HomeInterface as EndUserHomeInterface;
 use App\Http\Interfaces\EndUser\RegisterInterface;
 use App\Http\Repositories\Admin\AboutRepository;
@@ -22,8 +24,10 @@ use App\Http\Repositories\Admin\HomeRepository;
 use App\Http\Repositories\Admin\HomeSlideRepository;
 use App\Http\Repositories\Admin\ImageRepository;
 use App\Http\Repositories\Admin\PortfolioRepository;
+use App\Http\Repositories\Admin\ServiceRepository;
 use App\Http\Repositories\Admin\SettingRepository;
 use App\Http\Repositories\EndUser\AuthRepository;
+use App\Http\Repositories\EndUser\ContactRepository;
 use App\Http\Repositories\EndUser\HomeRepository as EndUserHomeRepository;
 use App\Http\Repositories\EndUser\RegisterRepository;
 use Illuminate\Support\ServiceProvider;
@@ -74,6 +78,10 @@ class RepositoryServiceProvider extends ServiceProvider
             SettingInterface::class,
             SettingRepository::class,
           );
+          $this->app->bind(
+            ServiceInterface::class,
+            ServiceRepository::class,
+          );
         /**
          * End  Admin Classes-------------------------------
          */
@@ -95,7 +103,10 @@ class RepositoryServiceProvider extends ServiceProvider
             AuthInterface::class,
             AuthRepository::class
           );
-
+          $this->app->bind(
+            ContactInterface::class,
+            ContactRepository::class
+          );
             /**
           * End EndUser Classes
           *

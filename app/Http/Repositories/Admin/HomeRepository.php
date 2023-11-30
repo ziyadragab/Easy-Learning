@@ -3,36 +3,35 @@
 namespace App\Http\Repositories\Admin;
 
 
-use App\Http\Interfaces\Admin\HomeInterface;
-use App\Http\Traits\ImagesTrait;
 use App\Models\User;
-use Yajra\DataTables\Facades\DataTables;
+use App\Models\Contact;
+use App\Http\Traits\ImagesTrait;
+use App\Http\Interfaces\Admin\HomeInterface;
 
-class HomeRepository implements HomeInterface {
+class HomeRepository implements HomeInterface
+{
 
     use ImagesTrait;
     public function index()
     {
-      return view('admin.index');
+        return view('admin.index');
     }
 
     public function profile()
     {
-      return view('admin.profile.index');
+        return view('admin.profile.index');
     }
     public function editProfile()
     {
-        $user=auth()->user();
-        return view('admin.profile.edit',compact('user'));
-
+        $user = auth()->user();
+        return view('admin.profile.edit', compact('user'));
     }
-    public function updateProfile( $user,$request)
+    public function updateProfile($user, $request)
     {
         $imageName = null;
 
         if ($request->hasFile('photo')) {
             $imageName = $this->uploadImage($request->file('photo'), User::PATH, $user->photo);
-
         }
 
         $user->fill([
@@ -53,15 +52,13 @@ class HomeRepository implements HomeInterface {
     }
     public function changeStatus($user)
     {
-        if($user->status =='active'){
-            $user->update(['status'=>'inactive']);
-            toast('Status Changed Successfully','success');
+        if ($user->status == 'active') {
+            $user->update(['status' => 'inactive']);
+            toast('Status Changed Successfully', 'success');
             return back();
         }
-        $user->update(['status'=>'active']);
-            toast('Status Changed Successfully','success');
-            return back();
+        $user->update(['status' => 'active']);
+        toast('Status Changed Successfully', 'success');
+        return back();
     }
 }
-
-?>

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\homeSlide;
+namespace App\Http\Requests\EndUser;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreHomeSlideRequest extends FormRequest
+class ContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +22,11 @@ class StoreHomeSlideRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title_en'     => 'required|string|max:255',
-            'title_ar'     => 'required|string|max:255',
-            'description_en' => 'required|string',
-            'description_ar' => 'required|string',
-            'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'video'       => 'nullable|string'
+            'name'=>['required','string','max:255'],
+            'email'=>['required','email','max:255'],
+            'subject'=>['required','string'],
+            'budget'=>['required','string','max:255'],
+            'message'=>['required','string'],
         ];
     }
 }

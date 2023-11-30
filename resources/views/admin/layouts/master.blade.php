@@ -5,14 +5,14 @@
 <head>
 
     <meta charset="UTF-8" />
-   
+
     <!-- Include the appropriate meta tag for video MIME type -->
     <meta http-equiv="Content-Type" content="video/mp4">
     <title>Admin & Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
-  
+
 
     @include('admin.layouts.header')
 
@@ -27,19 +27,19 @@
                     <div class="navbar-brand-box">
                         <a href="index.html" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="adminAssets/images/logo-sm.png" alt="logo-sm" height="22">
+                                <img src={{ asset("adminAssets/images/logo-sm.png") }} alt="logo-sm" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="adminAssets/images/logo-dark.png" alt="logo-dark" height="20">
+                                <img src={{ asset("adminAssets/images/logo-dark.png") }} alt="logo-dark" height="20">
                             </span>
                         </a>
 
                         <a href="index.html" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="adminAssets/images/logo-sm.png" alt="logo-sm-light" height="22">
+                                <img src={{ asset("adminAssets/images/logo-sm.png") }} alt="logo-sm-light" height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="adminAssets/images/logo-light.png" alt="logo-light" height="20">
+                                <img src={{ asset("adminAssets/images/logo-light.png") }} alt="logo-light" height="20">
                             </span>
                         </a>
                     </div>
@@ -80,7 +80,7 @@
                     <div class="dropdown d-none d-sm-inline-block">
                         <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <img class="" src="adminAssets/images/flags/us.jpg" alt="Language" height="16">
+                            <img class="" src={{ asset("adminAssets/images/flags/us.jpg") }} alt="Language" height="16">
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
 

@@ -9,7 +9,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\HomeSlideController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingControllre;
+use App\Http\Controllers\EndUser\ContactController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -147,6 +149,32 @@ Route::group(
                         Route::get('edit/{setting}', 'edit')->name('edit');
                         Route::put('update/{setting}', 'update')->name('update');
                         Route::delete('/{setting}', 'delete')->name('delete');
+                    }
+                );
+                Route::group(
+                    [
+                        'as' => 'service.',
+                        'prefix' => 'services',
+                        'controller' => ServiceController::class
+                    ],
+                    function () {
+                        Route::get('', 'index')->name('index');
+                        Route::get('create', 'create')->name('create');
+                        Route::post('store', 'store')->name('store');
+                        Route::get('edit/{service}', 'edit')->name('edit');
+                        Route::put('update/{service}', 'update')->name('update');
+                        Route::delete('/{service}', 'delete')->name('delete');
+                    }
+                );
+                Route::group(
+                    [
+                        'as' => 'contact.',
+                        'prefix' => 'contacts',
+                        'controller' => ContactController::class
+                    ],
+                    function () {
+                        Route::get('', 'index')->name('index');
+                        Route::delete('/{contact}','delete')->name('delete');
                     }
                 );
             }

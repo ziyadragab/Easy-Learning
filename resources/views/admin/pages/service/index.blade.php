@@ -7,9 +7,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-footer text-end w-2">
-                            <a href="{{ route('admin.blog.create') }}" class="btn btn-primary">+ Add New Blog</a>
+                            <a href="{{ route('admin.service.create') }}" class="btn btn-primary">+ Add New Service</a>
                         </div>
-                        <h4>All Home Blogs</h4>
+                        <h4>All Services</h4>
                         {!! $dataTable->table(['class'=>'table table-bordered dt-table-hover dataTable text-center'])
                         !!}
                     </div>
