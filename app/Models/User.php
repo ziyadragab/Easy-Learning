@@ -77,7 +77,7 @@ class User extends Authenticatable
             $this->group()->delete();
     }
     public function getImageAttribute($value){
-        return $this->PATH.DIRECTORY_SEPARATOR.$value;
+        return $this::PATH.DIRECTORY_SEPARATOR.$value;
     }
 
 }

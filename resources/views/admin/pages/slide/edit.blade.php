@@ -34,9 +34,17 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="description" class="form-label">Description</label>
-                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description', $slide->description) }}</textarea>
-                                    @error('description')
+                                    <label for="description_en" class="form-label">Description (English)</label>
+                                    <textarea class="form-control @error('description_en') is-invalid @enderror" id="description" name="description_en">{{ old('description_en',$slide->getTranslation('description','en')) }}</textarea>
+                                    @error('description_en')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="description_ar" class="form-label">Description (Arabic)</label>
+                                    <textarea class="form-control @error('description_ar') is-invalid @enderror" id="description" name="description_ar">{{ old('description_ar',$slide->getTranslation('description','ar')) }}</textarea>
+                                    @error('description_ar')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -48,30 +56,25 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                     <br>
-                                    @if ($slide->video)
-                                        <video width="320" height="240" controls>
-                                            <source src="{{ $slide->video }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    @endif
+
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                     <br>
                                     @if ($slide->image)
-                                        <img src="{{ asset($slide->image) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
+                                        <img id="preview" src="{{ asset($slide->image) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
                                         <p>Current Image</p>
                                     @endif
                                 </div>
 
                                 {{-- Add other form fields as needed --}}
 
-                                
+
 
                                 <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">Update Slide</button>
@@ -87,3 +90,4 @@
     </div>
 </div>
 @endsection
+

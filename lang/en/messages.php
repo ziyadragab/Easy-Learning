@@ -25,6 +25,10 @@ return [
     'delete'=>'Delete',
     'edit'=>'EDIT',
     'all'=>'All',
+    'service'=>'Service',
+    'new'=>'New',
+    'display'=>'Display',
+    'create'=>'Create',
 
 
 

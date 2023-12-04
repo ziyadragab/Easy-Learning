@@ -12,11 +12,11 @@ class Service extends Model
 {
     use HasFactory, HasSlug, HasTranslations;
 
-    protected $fillable = ['name', 'description', 'slug', 'image', 'lists'];
+    protected $fillable = ['name', 'description', 'slug', 'image', 'lists','short_description'];
     const PATH='Images/service';
    
 
-    public array $translatable  = ['name','description'];
+    public array $translatable  = ['name','short_description','description'];
     /**
      * Get the options for generating the slug.
      */

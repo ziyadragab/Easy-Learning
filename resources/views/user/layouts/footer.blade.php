@@ -1,4 +1,7 @@
     <!-- Footer-area -->
+    @php
+        $setting=App\Models\Setting::first()
+    @endphp
     <footer class="footer">
         <div class="container">
             <div class="row justify-content-between">
@@ -6,24 +9,18 @@
                     <div class="footer__widget">
                         <div class="fw-title">
                             <h5 class="sub-title">Contact us</h5>
-                            <h4 class="title">+81383 766 284</h4>
+                            <h4 class="title">{{ $setting->phone }}</h4>
                         </div>
-                        <div class="footer__widget__text">
-                            <p>There are many variations of passages of lorem ipsum
-                            available but the majority have suffered alteration
-                            in some form is also here.</p>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="footer__widget">
                         <div class="fw-title">
-                            <h5 class="sub-title">my address</h5>
-                            <h4 class="title">AUSTRALIA</h4>
+                            <h5 class="sub-title">{{$setting->address}}</h5>
                         </div>
                         <div class="footer__widget__address">
-                            <p>Level 13, 2 Elizabeth Steereyt set <br> Melbourne, Victoria 3000</p>
-                            <a href="mailto:noreply@envato.com" class="mail">noreply@envato.com</a>
+                            <a href="mailto:{{$setting->email}}" class="mail">{{$setting->email}}</a>
                         </div>
                     </div>
                 </div>
@@ -36,11 +33,10 @@
                         <div class="footer__widget__social">
                             <p>Lorem ipsum dolor sit amet enim. <br> Etiam ullamcorper.</p>
                             <ul class="footer__social__list">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="{{$setting->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{$setting->x}}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="{{$setting->linkedin}}"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="{{$setting->instagram}}"><i class="fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -50,7 +46,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright__text text-center">
-                            <p>Copyright @ Theme_Pure 2021 All right Reserved</p>
+                            <p>Easy Learning</p>
                         </div>
                     </div>
                 </div>
@@ -59,6 +55,7 @@
     </footer>
     <!-- Footer-area-end -->
 
+<!-- Add these lines to include Bootstrap CSS and JS -->
 
 
     <!-- JS here -->
@@ -73,19 +70,10 @@
     <script src="{{asset("userAssets/js/wow.min.js")}}"></script>
     <script src="{{asset("userAssets/js/plugins.js")}}"></script>
     <script src="{{ asset("userAssets/js/main.js") }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+<!-- Bootstrap CSS -->
+
 
     @include('sweetalert::alert')
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: 'Your Message Send Successfully',
-                timer: 6000, // Set the timer to 5 seconds
-                timerProgressBar: true,
-                showConfirmButton: false // Hide the "OK" button
-            });
-        });
-    </script>
 @stack('js')

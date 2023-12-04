@@ -37,13 +37,18 @@
 
                                 <!-- Add other fields as needed -->
 
-                                <label for="image">Image</label>
-                                <input type="file" name="image"
-                                       class="form-control @error('image') is-invalid @enderror">
-                                @if($blog->image)
-                                    <img src="{{ asset($blog->image) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
-                                @endif
-                                <span class="text-danger">{{ $errors->first('image') }}</span>
+                              
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()">
+                                    @error('image')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <br>
+                                    @if ($blog->image)
+                                        <img id="preview" src="{{ asset($blog->image) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
+                                        <p>Current Image</p>
+                                    @endif
+                                
 
                                 <label for="tags">Tags</label>
                                 <select name="tags[]" class="form-control @error('tags') is-invalid @enderror" multiple>

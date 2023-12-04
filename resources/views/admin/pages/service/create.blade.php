@@ -30,6 +30,22 @@
                                         id="name_ar" name="name_ar" value="{{ old('name_ar') }}">
                                     <span class="text-danger">{{ $errors->first('name_ar') }}</span>
                                 </div>
+                                <!-- Description (English) -->
+                                <div class="mb-3">
+                                    <label for="short_description_en" class="form-label">Short Description (English)</label>
+                                    <textarea class="form-control @error('description_en') is-invalid @enderror"
+                                        id="description_en" name="short_description_en">{{ old('short_description_en') }}</textarea>
+                                    <span class="text-danger">{{ $errors->first('short_description_en') }}</span>
+                                </div>
+
+                                <!-- Description (Arabic) -->
+                                <div class="mb-3">
+                                    <label for="short_description_ar" class="form-label">Short Description (Arabic)</label>
+                                    <textarea class="form-control @error('short_description_ar') is-invalid @enderror"
+                                        id="short_description_ar" name="short_description_ar">{{ old('short_description_ar') }}</textarea>
+                                    <span class="text-danger">{{ $errors->first('short_description_ar') }}</span>
+                                </div>
+
 
                                 <!-- Description (English) -->
                                 <div class="mb-3">

@@ -23,12 +23,12 @@ class ServiceRepository implements ServiceInterface
     }
     public function create()
     {
-       
+
         return view('admin.pages.service.create');
     }
     public function store($request)
     {
-        
+
         $imageName = $this->uploadImage($request->file('image'), $this->serviceModel::PATH);
         $this->serviceModel::create([
             'name' => [
@@ -39,6 +39,10 @@ class ServiceRepository implements ServiceInterface
                 'en' => $request->description_en,
                 'ar' => $request->description_ar,
             ],
+            'short_description' => [
+                'en' => $request->short_description_en,
+                'ar' => $request->short_description_ar,
+            ],
             'lists'            => $request->lists,
             'image' => $imageName,
         ]);
@@ -48,7 +52,7 @@ class ServiceRepository implements ServiceInterface
     }
     public function edit($service)
     {
-        return view('admin.pages.service.edit',compact(['service']));
+        return view('admin.pages.service.edit', compact(['service']));
     }
     public function update($service, $request)
     {
@@ -63,6 +67,10 @@ class ServiceRepository implements ServiceInterface
             'description' => [
                 'en' => $request->description_en,
                 'ar' => $request->description_ar,
+            ],
+            'short_description' => [
+                'en' => $request->short_description_en,
+                'ar' => $request->short_description_ar,
             ],
             'lists'            => $request->lists,
             'image' => $newImage ?? $service->getRawOriginal('image')

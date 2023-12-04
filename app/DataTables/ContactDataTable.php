@@ -70,8 +70,6 @@ class ContactDataTable extends DataTable
         return [
           ['data'=>'name','title'=>trans('messages.name'),'name'=>'name'],
           ['data'=>'email','title'=>trans('messages.email'),'name'=>'email'],
-          ['data'=>'subject','title'=>trans('messages.subject'),'name'=>'subject'],
-          ['data'=>'budget','title'=>trans('messages.budget'),'name'=>'budget'],
           ['data'=>'message','title'=>trans('messages.messages'),'name'=>'message'],
           ['data' => 'action', 'title' => trans('messages.action'), 'name' => 'action', 'searchable' => false, 'printable' => false, 'exportable' => false],
 

@@ -24,7 +24,8 @@ class UpdateHomeSlideRequest extends FormRequest
         return [
             'title_en'       => 'required|string|max:255',
             'title_ar'       => 'required|string|max:255',
-            'description' => 'required|string',
+            'description_en' => 'required|string',
+            'description_ar' => 'required|string',
             'image'       => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'video'       => 'url',
         ];

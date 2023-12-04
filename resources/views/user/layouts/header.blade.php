@@ -1,4 +1,4 @@
-<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="{{asset("userAssets/img/favicon.png")}}">
         <!-- Place favicon.ico in the root directory -->
 
 		<!-- CSS here -->
@@ -10,5 +10,7 @@
         <link rel="stylesheet" href="{{ asset("userAssets/css/default.css") }}">
         <link rel="stylesheet" href="{{asset ("userAssets/css/style.css") }}">
         <link rel="stylesheet" href="{{ asset("userAssets/css/responsive.css") }}">
+        <link rel="stylesheet" href="{{ asset('vendor/pagination/pagination.css') }}">
+
 
         @stack('css')

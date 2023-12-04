@@ -34,6 +34,12 @@ Route::group(
             function () {
                 Route::get('', 'index')->name('index');
                 Route::get('about', 'showAbout')->name('showAbout');
+                Route::get('serviceDetails/{service}', 'serviceDetails')->name('serviceDetails');
+                Route::get('blogDetails/{blog}', 'blogDetails')->name('blogDetails');
+                Route::get('portfolioDetails/{portfolio}', 'portfolioDetails')->name('portfolioDetails');
+                Route::get('portfolios', 'showPortfolio')->name('showPortfolio');
+                Route::post('createComment/{blog}', 'createComment')->name('comment.store');
+
                 Route::group(
                     [
                         'as' => 'contact.',

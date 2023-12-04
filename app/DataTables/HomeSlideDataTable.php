@@ -26,14 +26,7 @@ class HomeSlideDataTable extends DataTable
                 return '<img src="' . asset($slide->image ?? null) . '" alt="" style="max-width: 100px; max-height: 100px;">';
             })
 
-            ->editColumn('video', function (HomeSlide $slide) {
-                $videoUrl = $slide->video;
-
-                return '<video width="60" height="60" controls>
-                        <source src="' . $videoUrl . '" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>';
-            })
+          
 
             ->editColumn('description', function (HomeSlide $slide) {
                 return view('admin.pages.slide.descrption', compact('slide'));
@@ -89,7 +82,6 @@ class HomeSlideDataTable extends DataTable
             ['data' => 'title', 'title' => 'TITLE', 'name' => 'title'],
             ['data' => 'description', 'title' => 'DESCRIPTION', 'name' => 'description'],
             ['data' => 'image', 'title' => 'IMAGE', 'name' => 'image'],
-            ['data' => 'video', 'title' => 'VIDEO', 'name' => 'video'],
             ['data' => 'action', 'title' => 'ACTION', 'name' => 'action', 'searchable' => false, 'printable' => false, 'exportable' => false],
         ];
     }

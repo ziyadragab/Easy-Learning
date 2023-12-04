@@ -27,13 +27,13 @@ class ContactRepository implements ContactInterface
             'budget' => $request->budget,
             'message' => $request->message,
         ]);
-        Alert::success('Success', 'Your Message Send Successfully');
-        return redirect(route('endUser.index'));
+        toast('Your Message Send Successfully','success');
+        return back();
     }
     public function delete($contact)
     {
         $contact->delete();
-        toast('Contact Deleted Successfully','success');
+         toast('Contact Deleted Successfully','success');
          return redirect(route('admin.contact.index'));
     }
 }

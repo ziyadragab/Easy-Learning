@@ -28,6 +28,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('endUser.index') }}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i>
+                        <span>User Interface</span>
+                    </a>
+                </li>
+                <li>
                     @php
                     $unreadMessagesCount = App\Models\Contact::where('is_read', false)->count()??null;
                     @endphp
@@ -61,7 +67,7 @@
                                 <a href="{{ route('admin.slide.create') }}">Create New Slide</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.slide.index') }}">Display Slides</a>
+                                <a href="{{ route('admin.slide.index') }}">{{ __('messages.display').' '. __('messages.slides') }} </a>
                             </li>
                         </ul>
                     </div>
@@ -77,7 +83,7 @@
                                 <a href="{{ route('admin.image.create') }}">Create New Image</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.image.index') }}">Display Images</a>
+                                <a href="{{ route('admin.image.index') }}">{{ __('messages.display').' '. __('messages.images') }} </a>
                             </li>
                         </ul>
                     </div>
@@ -95,7 +101,7 @@
                                 <a href="{{ route('admin.portfolio.create') }}">Create New Portfolio</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.portfolio.index') }}">Display Portfolios</a>
+                                <a href="{{ route('admin.portfolio.index') }}">{{ __('messages.display').' '. __('messages.portFolio') }} </a>
                             </li>
                         </ul>
                     </div>
@@ -113,7 +119,7 @@
                                 <a href="{{ route('admin.category.create') }}">Create New Category</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.category.index') }}">Display Category</a>
+                                <a href="{{ route('admin.category.index') }}">{{ __('messages.display').' '. __('messages.category') }} </a>
                             </li>
                         </ul>
                     </div>
@@ -131,7 +137,7 @@
                                 <a href="{{ route('admin.blog.create') }}">Create New Blog</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.blog.index') }}">Display Blogs</a>
+                                <a href="{{ route('admin.blog.index') }}">{{ __('messages.display').' '. __('messages.blog') }} </a>
                             </li>
                         </ul>
                     </div>
@@ -139,16 +145,16 @@
 
                 <li>
                     <a class="waves-effect" data-bs-toggle="collapse" href="#service" role="button" aria-expanded="false">
-                        <i class="fas fa-service"></i>
-                        <span>Services</span>
+                        <i class="fas fa-cogs"></i>
+                        <span>{{ __('messages.service') }}</span>
                     </a>
                     <div class="collapse" id="service">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('admin.service.create') }}">Create New Service</a>
+                                <a href="{{ route('admin.service.create') }}"> {{ __('messages.create').' '.__('messages.new').' '. __('messages.service') }}</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.service.index') }}">Display Services</a>
+                                <a href="{{ route('admin.service.index') }}">{{ __('messages.display').' '. __('messages.service') }} </a>
                             </li>
                         </ul>
                     </div>
@@ -165,7 +171,7 @@
                                 <a href="{{ route('admin.about.create') }}">Create New About</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.about.index') }}">Display Abouts</a>
+                                <a href="{{ route('admin.about.index') }}">{{ __('messages.display').' '. __('messages.about') }} </a>
                             </li>
                         </ul>
                     </div>

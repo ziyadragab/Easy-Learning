@@ -70,20 +70,17 @@
                                 </div>
 
                                 <!-- Old Image -->
-                                @if($portfolio->image)
-                                    <div class="mb-3">
-                                        <label for="old_image" class="form-label">Old Image</label>
-                                        <img src="{{ asset($portfolio->image) }}" alt="Old Image" style="max-width: 100px; max-height: 100px;">
-                                    </div>
-                                @endif
-
-                                <!-- New Image -->
                                 <div class="mb-3">
-                                    <label for="image" class="form-label">New Image</label>
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
+                                    <label for="image" class="form-label">Image</label>
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                    <br>
+                                    @if ($portfolio->image)
+                                        <img id="preview" src="{{ asset($portfolio->image) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
+                                        <p>Current Image</p>
+                                    @endif
                                 </div>
 
 

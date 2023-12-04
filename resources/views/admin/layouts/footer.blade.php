@@ -5,11 +5,11 @@
             <div class="col-sm-6">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> © Upcube.
+                </script> Easy Learning.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                   Developed By <i class="mdi mdi-heart text-danger"></i>  Ziyad Ragab
                 </div>
             </div>
         </div>
@@ -58,5 +58,18 @@
 <script src="{{ asset("adminAssets/js/app.js") }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @include('sweetalert::alert')
+<script>
+    function previewImage() {
+        var input = document.getElementById('image');
+        var preview = document.getElementById('preview');
 
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @stack('js')

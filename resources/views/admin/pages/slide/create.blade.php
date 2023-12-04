@@ -40,7 +40,7 @@
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description In Arabic</label>
                                     <textarea class="form-control @error('description_ar') is-invalid @enderror" id="description" name="description_ar" ></textarea>
-                                    @error('description')
+                                    @error('description_ar')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

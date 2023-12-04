@@ -9,20 +9,20 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Edit Slide</h4>
+                            <h4 class="header-title">Edit Image</h4>
 
                             <form action="{{ route('admin.image.update', $image) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
                                     <label for="image" class="form-label">Image</label>
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" onchange="previewImage()">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                     <br>
                                     @if ($image->image)
-                                        <img src="{{ asset($image->image) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
+                                        <img id="preview" src="{{ asset($image->image) }}" alt="Current Image" style="max-width: 100px; max-height: 100px;">
                                         <p>Current Image</p>
                                     @endif
                                 </div>

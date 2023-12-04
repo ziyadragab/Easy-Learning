@@ -47,6 +47,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                    
                                 </div>
 
                                 <div class="row mb-3">
